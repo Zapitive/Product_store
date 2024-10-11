@@ -12,7 +12,9 @@ export const getProducts = async (req,res)=>{
 }
 
 export const createProduct = async (req,res)=>{
+    console.log("reached")
     const product = req.body;
+    console.log(product)
 
     if(!product.name || !product.price || !product.image){
         return res.status(400).json({success:false, message:'Please provide will all fields'})
@@ -25,7 +27,7 @@ export const createProduct = async (req,res)=>{
         res.status(201).json({success:true, message:'new product added successfully',data:newProduct})
     }catch(err){
         console.error('Error in create product:',err.message)
-        res.status(500).json({success:false,message:'Server error'})
+        res.status(400).json({success:false,message:'Server error'})
     }
 }
 
